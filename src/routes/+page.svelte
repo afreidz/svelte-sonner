@@ -10,10 +10,10 @@
 	import Types from '../components/Types.svelte';
 	import Usage from '../components/Usage.svelte';
 
-	let expand = false;
-	let position: PositionType = 'bottom-right';
-	let richColors = false;
-	let closeButton = false;
+	let expand = $state(false);
+	let position: PositionType = $state('bottom-right');
+	let richColors = $state(false);
+	let closeButton = $state(false);
 </script>
 
 <svelte:head>

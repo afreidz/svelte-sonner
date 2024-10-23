@@ -1,5 +1,9 @@
 <script lang="ts">
-	export let visible: boolean;
+	interface Props {
+		visible: boolean;
+	}
+
+	let { visible }: Props = $props();
 	const bars = Array(12).fill(0);
 </script>
 

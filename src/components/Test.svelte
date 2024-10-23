@@ -1,7 +1,11 @@
 <script lang="ts">
 	import { createEventDispatcher } from 'svelte';
 
-	export let eventName: string;
+	interface Props {
+		eventName: string;
+	}
+
+	let { eventName }: Props = $props();
 
 	const dispatch = createEventDispatcher();
 </script>
@@ -12,7 +16,7 @@
 	<button
 		data-testid="close-button"
 		class="headlessClose"
-		on:click={() => dispatch('closeToast')}
+		onclick={() => dispatch('closeToast')}
 	>
 		<svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor">
 			<path

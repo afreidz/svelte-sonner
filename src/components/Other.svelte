@@ -6,7 +6,11 @@
 	import TestWithProps from './TestWithProps.svelte';
 	import { getOtherCodeSnippet } from './code-snippets';
 
-	export let closeButton = false;
+	interface Props {
+		closeButton?: boolean;
+	}
+
+	let { closeButton = $bindable(false) }: Props = $props();
 
 	const dispatch = createEventDispatcher();
 
@@ -94,10 +98,10 @@
 		}
 	];
 
-	let activeType = allTypes[0];
+	let activeType = $state(allTypes[0]);
 
-	$: richColorsActive = activeType?.name?.includes('Rich');
-	$: closeButtonActive = activeType?.name?.includes('Close');
+	let richColorsActive = $derived(activeType?.name?.includes('Rich'));
+	let closeButtonActive = $derived(activeType?.name?.includes('Close'));
 </script>
 
 <div>
@@ -108,7 +112,7 @@
 				class="button"
 				data-testid={`other-${type.name}`}
 				data-active={activeType?.name === type.name}
-				on:click={() => {
+				onclick={() => {
 					type.action?.();
 					activeType = type;
 				}}

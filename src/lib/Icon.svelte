@@ -1,7 +1,11 @@
 <script lang="ts">
 	import type { ToastTypes } from '$lib/types.js';
 
-	export let type: ToastTypes = 'success';
+	interface Props {
+		type?: ToastTypes;
+	}
+
+	let { type = 'success' }: Props = $props();
 </script>
 
 {#if type === 'success'}

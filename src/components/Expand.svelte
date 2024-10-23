@@ -3,7 +3,11 @@
 	import { createEventDispatcher } from 'svelte';
 	import CodeBlock from './CodeBlock.svelte';
 
-	export let expand: boolean;
+	interface Props {
+		expand: boolean;
+	}
+
+	let { expand }: Props = $props();
 
 	const dispatch = createEventDispatcher();
 </script>
@@ -19,7 +23,7 @@
 		<button
 			data-active={expand}
 			class="button"
-			on:click={() => {
+			onclick={() => {
 				toast('Event has been created', {
 					description: 'Monday, January 3rd at 6:00pm'
 				});
@@ -31,7 +35,7 @@
 		<button
 			data-active={!expand}
 			class="button"
-			on:click={() => {
+			onclick={() => {
 				toast('Event has been created', {
 					description: 'Monday, January 3rd at 6:00pm'
 				});

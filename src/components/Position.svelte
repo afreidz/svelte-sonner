@@ -12,7 +12,11 @@
 		'bottom-right'
 	] as const;
 
-	export let position: (typeof positions)[number];
+	interface Props {
+		position: (typeof positions)[number];
+	}
+
+	let { position }: Props = $props();
 
 	const dispatch = createEventDispatcher();
 </script>
@@ -25,7 +29,7 @@
 			<button
 				data-active={position === pos}
 				class="button"
-				on:click={() => {
+				onclick={() => {
 					const toastsAmount = document.querySelectorAll(
 						'[data-sonner-toast]'
 					).length;
