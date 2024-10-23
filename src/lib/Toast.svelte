@@ -1,3 +1,4 @@
+<!-- @migration-task Error while migrating Svelte code: $$props is used together with named props in a way that cannot be automatically migrated. -->
 <!-- Set immutable: true to avoid unnecessary re-runs of reactive statements. -->
 <svelte:options immutable={true} />
 
